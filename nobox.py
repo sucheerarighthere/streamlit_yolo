@@ -44,26 +44,23 @@ if uploaded_file is not None:
   # #0  148.605362   0.0    1022.523743  818.618286    0.813045      2      turtle
   
   #  st.code(detect_class[['name', 'xmin','ymin', 'xmax', 'ymax']])
-  
-  
-  
-          # st.success(detect_class)
+   # st.success(detect_class)
         outputpath = 'output.jpg'
-        num_objects_detected = len(detect_class)
-        result.render()  # render bbox in image
+    num_objects_detected = len(detect_class)
+    result.render()  # render bbox in image
         
         # Save the image with bounding boxes
-        img_with_boxes = Image.fromarray(result.ims[0])  # Assuming there's only one image in result.ims
-        img_with_boxes.save(outputpath)
+    img_with_boxes = Image.fromarray(result.ims[0])  # Assuming there's only one image in result.ims
+    img_with_boxes.save(outputpath)
         
         # Display the image with bounding boxes and the number of objects detected
-        img_with_boxes = Image.open(outputpath)
+    img_with_boxes = Image.open(outputpath)
         
         # Draw bounding boxes on the image
-        draw = ImageDraw.Draw(img_with_boxes)
-        for box in result.xyxy[0]:
-            draw.rectangle(box[1:], outline="red", width=3)
+    draw = ImageDraw.Draw(img_with_boxes)
+    for box in result.xyxy[0]:
+        draw.rectangle(box[1:], outline="red", width=3)
         
           # Display the image without label names
-            st.image(img_with_boxes, caption='Model Prediction(s)')
-            st.write(f"Number of objects detected: {num_objects_detected}")
+        st.image(img_with_boxes, caption='Model Prediction(s)')
+        st.write(f"Number of objects detected: {num_objects_detected}")
