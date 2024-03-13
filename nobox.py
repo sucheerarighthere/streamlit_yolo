@@ -6,61 +6,50 @@ from PIL import Image
 import numpy as np
 import torch, json , cv2 , detect
 import PIL
+import streamlit as st
+from PIL import Image
+import numpy as np
+import cv2
+import torch
 
-#ตั้งค่าเพจให้เป็นแบบที่เราต้องการ พื้นหกลัง ตัวหนังสือ ใดๆว่าไป
-st.set_page_config(page_title="Object Detection",  # Setting page title
-    page_icon="🔬",     # Setting page icon
-    layout="wide",      # Setting layout to wide
-    initial_sidebar_state="expanded",# Expanding sidebar by default
-    
-        )   
-
-#ตั้งค่าภาพ
+# Set image
 image = Image.open('STAT-Header-Logo-V7.png')
-st.image(image, caption='สาขาวิชาสถิติ คณะวิทยาศาสตร์ มหาวิทยาลัยขอนแก่น', use_column_width=True )
+st.image(image, caption='สาขาวิชาสถิติ คณะวิทยาศาสตร์ มหาวิทยาลัยขอนแก่น', use_column_width=True)
 
+# Load YOLOv5 model
 model = torch.hub.load('ultralytics/yolov5', 'custom', path='models/bestyolo.pt')
 
-uploaded_file = st.file_uploader("Choose .jpg pic ...", type="jpg")
-if uploaded_file is not None:
-  
-  file_bytes = np.asarray(bytearray(uploaded_file.read()))
-  image = cv2.imdecode(file_bytes, 1)
+# Use st.file_uploader for file upload
+uploaded_files = st.file_uploader("Choose .jpg pic ...", type= ["jpeg", "png", "bmp", "webp"], accept_multiple_files=True)
 
-  imgRGB = cv2.cvtColor(image , cv2.COLOR_BGR2RGB)
-  #st.image(imgRGB)
+# Check if any file is uploaded
+if uploaded_files:
+    for uploaded_file in uploaded_files:
+        if uploaded_file is not None:
+            try:
+                # Read and decode the uploaded image
+                file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
+                image = cv2.imdecode(file_bytes, cv2.IMREAD_COLOR)
+                
+                # Run YOLOv5 model on the image
+                result = model(image, size=300)
+                
+                # Extract detected objects' information
+                detect_class = result.xyxy[0]
+                num_objects_detected = len(detect_class)
 
-  st.write("")
-  st.write("Detecting...")
-  result = model(imgRGB, size=300)
-  
-  detect_class = result.pandas().xyxy[0] 
-# Rename the 'name' column values from 'chromosome' to 'c'
-  detect_class['name'] = detect_class['name'].replace({'chromosome': 'c'})
+                # Draw bounding boxes on the image
+                for detection in detect_class:
+                    x_min, y_min, x_max, y_max, conf, cls = detection
+                    cv2.rectangle(image, (int(x_min), int(y_min)), (int(x_max), int(y_max)), (0, 255, 0), 2)
+                    cv2.putText(image, f'Class: {int(cls)}', (int(x_min), int(y_min) - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2)
 
-  # #labels, cord_thres = detect_class[:, :].numpy(), detect_class[:, :].numpy()
-  
-  # #     xmin       ymin    xmax        ymax          confidence  class    name
-  # #0  148.605362   0.0    1022.523743  818.618286    0.813045      2      turtle
-  
-#  st.code(detect_class[['name', 'xmin','ymin', 'xmax', 'ymax']])
-# st.success(detect_class)
-outputpath = 'output.jpg'
-num_objects_detected = len(detect_class)
-result.render()  # render bbox in image
+                # Convert image to RGB format
+                image_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
-# Save the image with bounding boxes
-img_with_boxes = Image.fromarray(result.ims[0])  # Assuming there's only one image in result.ims
-img_with_boxes.save(outputpath)
+                # Display the image with bounding boxes and captions in column 3
+                st.image(image_rgb, caption=f'Number of objects detected: {num_objects_detected}', use_column_width=True)
 
-# Display the image with bounding boxes and the number of objects detected
-img_with_boxes = Image.open(outputpath)
-
-# Draw bounding boxes on the image
-draw = ImageDraw.Draw(img_with_boxes)
-for box in result.xyxy[0]:
-    draw.rectangle(box[1:], outline="red", width=3)
-
-  # Display the image without label names
-st.image(img_with_boxes, caption='Model Prediction(s)')
-st.write(f"Number of objects detected: {num_objects_detected}")
+            except Exception as e:
+                # Display an error message if an exception occurs during processing
+                st.error(f"Error processing file: {e}")
