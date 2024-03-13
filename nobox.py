@@ -47,23 +47,23 @@ if uploaded_file is not None:
   
   
   
-  # st.success(detect_class)
-outputpath = 'output.jpg'
-num_objects_detected = len(detect_class)
-result.render()  # render bbox in image
-
-# Save the image with bounding boxes
-img_with_boxes = Image.fromarray(result.ims[0])  # Assuming there's only one image in result.ims
-img_with_boxes.save(outputpath)
-
-# Display the image with bounding boxes and the number of objects detected
-img_with_boxes = Image.open(outputpath)
-
-# Draw bounding boxes on the image
-draw = ImageDraw.Draw(img_with_boxes)
-for box in result.xyxy[0]:
-    draw.rectangle(box[1:], outline="red", width=3)
-
-  # Display the image without label names
-st.image(img_with_boxes, caption='Model Prediction(s)')
-st.write(f"Number of objects detected: {num_objects_detected}")
+          # st.success(detect_class)
+        outputpath = 'output.jpg'
+        num_objects_detected = len(detect_class)
+        result.render()  # render bbox in image
+        
+        # Save the image with bounding boxes
+        img_with_boxes = Image.fromarray(result.ims[0])  # Assuming there's only one image in result.ims
+        img_with_boxes.save(outputpath)
+        
+        # Display the image with bounding boxes and the number of objects detected
+        img_with_boxes = Image.open(outputpath)
+        
+        # Draw bounding boxes on the image
+        draw = ImageDraw.Draw(img_with_boxes)
+        for box in result.xyxy[0]:
+            draw.rectangle(box[1:], outline="red", width=3)
+        
+          # Display the image without label names
+            st.image(img_with_boxes, caption='Model Prediction(s)')
+            st.write(f"Number of objects detected: {num_objects_detected}")
