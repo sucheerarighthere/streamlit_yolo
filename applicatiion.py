@@ -168,7 +168,7 @@ if uploaded_files:
                     img_ = Image.open(outputpath)
                     col2.image(img_, caption='Model Prediction(s)')
                     num_objects_detected = len(detect_class)
-                    st.write(f"Number of objects detected: {num_objects_detected}")
+                        st.write(f"Number of objects detected: {num_objects_detected}")
                 # # Display the number of detected objects in col3
                 # num_objects_detected = len(detect_class)
                 # col3.write(f"Number of objects detected: {num_objects_detected}")
