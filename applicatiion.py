@@ -169,7 +169,7 @@ if uploaded_files:
                     img_ = Image.open(outputpath)
                     col2.image(img_, caption=f'Model Prediction(s)' , use_column_width=True) #Number of objects detected: {num_objects_detected}'
                     num_objects_detected = len(detect_class)
-                    col2.write(f"<h1 style='text-align: center;'>Number of objects detected: {num_objects_detected}</h1>", unsafe_allow_html=True)
+                    col2.write(f"<h1 style='text-align: center;'The number of detected chromosomes: {num_objects_detected}</h1>", unsafe_allow_html=True)
                     # st.write(f"Number of objects detected: {num_objects_detected}")
                 # Display the number of detected objects in col3
                 num_objects_detected = len(detect_class)
