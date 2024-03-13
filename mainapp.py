@@ -202,10 +202,10 @@ for uploaded_file in uploaded_files:
             # Display the original image
             st.image(imgRGB, caption='Original Image', use_column_width=True)
 
-            # Display bounding boxes without class names and confidence scores
-            for pred in detect_class:
-                bbox = pred[:4]
-                st.image(cv2.rectangle(imgRGB.copy(), tuple(bbox[:2]), tuple(bbox[2:]), (0, 255, 0), 2), use_column_width=True)
+            # # Display bounding boxes without class names and confidence scores
+            # for pred in detect_class:
+            #     bbox = pred[:4]
+            #     st.image(cv2.rectangle(imgRGB.copy(), tuple(bbox[:2]), tuple(bbox[2:]), (0, 255, 0), 2), use_column_width=True)
 
             # Display the number of detected objects
             num_objects_detected = len(detect_class)
