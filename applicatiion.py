@@ -158,7 +158,7 @@ if uploaded_files:
 
                 # Display the original image in col1
                 col1.image(imgRGB, caption='Original Image', use_column_width=True)
-                col1.write(f"<h1 style='text-align: center;'>Uploaded File: {uploaded_file.name}"</h1>", unsafe_allow_html=True)
+                col1.write(f"<h1 style='text-align: center;'>Uploaded File: {uploaded_file.name}</h1>", unsafe_allow_html=True)
                 # Display bounding boxes without class names and confidence scores in col
                 outputpath = 'output.jpg'
                 num_objects_detected = len(detect_class)
