@@ -146,8 +146,8 @@ if uploaded_files:
                 imgRGB = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
                 # Display information about the detection process
-                st.write("")
-                st.write("Detecting...")
+                # st.write("")
+                # st.write("Detecting...")
 
                 # Run YOLOv5 model on the image
                 result = model(imgRGB, size=300)
@@ -175,7 +175,8 @@ if uploaded_files:
 
                 # # Break the loop to process only one uploaded image
                 # break
-
+                # Display file name below the original image
+                col1.write(f"Uploaded File: {uploaded_file.name}")
             except Exception as e:
                 # Display an error message if an exception occurs during processing
                 st.error(f"Error processing file: {e}")
