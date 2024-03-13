@@ -167,8 +167,9 @@ if uploaded_files:
                     im_base64 = Image.fromarray(im)
                     im_base64.save(outputpath)
                     img_ = Image.open(outputpath)
-                    col2.image(img_, caption=f'Model Prediction(s)  Number of objects detected: {num_objects_detected}', use_column_width=True)
+                    col2.image(img_, caption=f'Model Prediction(s)' , use_column_width=True) #Number of objects detected: {num_objects_detected}'
                     num_objects_detected = len(detect_class)
+                    col2.write(f"<h1 style='text-align: center;'>Number of objects detected: {num_objects_detected}</h1>", unsafe_allow_html=True)
                     # st.write(f"Number of objects detected: {num_objects_detected}")
                 # Display the number of detected objects in col3
                 num_objects_detected = len(detect_class)
