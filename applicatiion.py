@@ -145,7 +145,7 @@ if uploaded_files:
                 file_bytes = np.asarray(bytearray(uploaded_file.read()))
                 image = cv2.imdecode(file_bytes, 1)
                 imgRGB = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-                st.write("=====")
+                # st.write("=====")
                 # Display information about the detection process
                 # st.write("")
                 # st.write("Detecting...")
@@ -176,7 +176,7 @@ if uploaded_files:
                 # col3.write(f"Number of objects detected: {num_objects_detected}")
 
                 # # Break the loop to process only one uploaded image
-                # break
+                break
                 # Display file name below the original image
                 
             except Exception as e:
