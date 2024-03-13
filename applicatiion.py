@@ -122,7 +122,6 @@ import torch
 import cv2
 import detect
 import streamlit as st
-from annotated_text import annotated_text
 
 # Set image
 image = Image.open('STAT-Header-Logo-V7.png')
