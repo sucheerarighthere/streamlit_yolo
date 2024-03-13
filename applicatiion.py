@@ -176,7 +176,7 @@ if uploaded_files:
                 # col3.write(f"Number of objects detected: {num_objects_detected}")
 
                 # # Break the loop to process only one uploaded image
-                break
+                # break
                 # Display file name below the original image
                 
             except Exception as e:
