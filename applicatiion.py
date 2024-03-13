@@ -171,8 +171,8 @@ if uploaded_files:
                 num_objects_detected = len(detect_class)
                 col3.write(f"Number of objects detected: {num_objects_detected}")
 
-                # Break the loop to process only one uploaded image
-                break
+                # # Break the loop to process only one uploaded image
+                # break
 
             except Exception as e:
                 # Display an error message if an exception occurs during processing
