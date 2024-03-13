@@ -121,6 +121,8 @@ import numpy as np
 import torch
 import cv2
 import detect
+import streamlit as st
+from annotated_text import annotated_text
 
 # Set image
 image = Image.open('STAT-Header-Logo-V7.png')
@@ -157,7 +159,7 @@ if uploaded_files:
 
                 # Display the original image in col1
                 col1.image(imgRGB, caption='Original Image', use_column_width=True)
-
+                col1.write(f"Uploaded File: {uploaded_file.name}")
                 # Display bounding boxes without class names and confidence scores in col
                 outputpath = 'output.jpg'
                 num_objects_detected = len(detect_class)
@@ -176,7 +178,7 @@ if uploaded_files:
                 # # Break the loop to process only one uploaded image
                 # break
                 # Display file name below the original image
-                col1.write(f"Uploaded File: {uploaded_file.name}")
+                
             except Exception as e:
                 # Display an error message if an exception occurs during processing
                 st.error(f"Error processing file: {e}")
