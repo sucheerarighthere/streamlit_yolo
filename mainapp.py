@@ -150,7 +150,8 @@ for uploaded_file in uploaded_files:
 
             # Display the original image
             st.image(imgRGB, caption='Original Image', use_column_width=True)
-
+            # print result.key
+            print(dir(result))
             # # Display bounding boxes without class names and confidence scores
             # for pred in detect_class:
             #     bbox = pred[:4]
