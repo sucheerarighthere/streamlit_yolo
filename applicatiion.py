@@ -135,8 +135,8 @@ uploaded_files = st.file_uploader("Choose .jpg pic ...", type= ["jpeg", "png", "
 # Check if any file is uploaded
 if uploaded_files:
     # Create columns for layout
-    # col1, col2, col3 = st.columns(3)
-    col1, col2 = st.columns(2)
+    col1, col2, col3 = st.columns(3)
+    # col1, col2 = st.columns(2)
     for uploaded_file in uploaded_files:
         if uploaded_file is not None:
             try:
@@ -168,10 +168,10 @@ if uploaded_files:
                     img_ = Image.open(outputpath)
                     col2.image(img_, caption='Model Prediction(s)')
                     num_objects_detected = len(detect_class)
-                    st.write(f"Number of objects detected: {num_objects_detected}")
-                # # Display the number of detected objects in col3
-                # num_objects_detected = len(detect_class)
-                # col3.write(f"Number of objects detected: {num_objects_detected}")
+                    # st.write(f"Number of objects detected: {num_objects_detected}")
+                # Display the number of detected objects in col3
+                num_objects_detected = len(detect_class)
+                col3.write(f"Number of objects detected: {num_objects_detected}")
 
                 # # Break the loop to process only one uploaded image
                 # break
