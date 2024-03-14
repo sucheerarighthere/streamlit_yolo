@@ -58,7 +58,7 @@ if uploaded_file is not None:
   #     img_ = Image.open(outputpath)
   #     st.image(img_, caption='Model Prediction(s)')
   #     st.write(f"Number of objects detected: {num_objects_detected}")
-for i in range(num_objects):
+for i in range(num_objects_detected):
     # ดึงข้อมูล bounding box จาก detect_class
     bbox = detect_class[i][:4]  # [x_min, y_min, x_max, y_max]
 
