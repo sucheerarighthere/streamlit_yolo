@@ -80,3 +80,23 @@ st.image(image, caption='Image with Bounding Boxes', use_column_width=True)
 # cv2.imshow('Detected Objects', image)
 # cv2.waitKey(0)
 # cv2.destroyAllWindows()
+import streamlit as st
+from PIL import Image
+import matplotlib.pyplot as plt
+
+# ฟังก์ชันสำหรับวาดกรอบ bounding box บนภาพ
+def draw_bounding_boxes(image, detections):
+    img = Image.open(image)
+    plt.imshow(img)
+    
+    # วาด bounding box บนภาพ
+    for detection in detections:
+        x_min, y_min, x_max, y_max = detection['xmin'], detection['ymin'], detection['xmax'], detection['ymax']
+        rect = plt.Rectangle((x_min, y_min), x_max - x_min, y_max - y_min, fill=False, edgecolor='red', linewidth=2)
+        plt.gca().add_patch(rect)
+    
+    # ปรับขนาดและแสดงภาพ
+    plt.axis('off')  # ปิดเส้นแกน
+    st.pyplot()  # แสดงผลภาพใน Streamlit
+
+    draw_bounding_boxes(uploaded_file, detect_class)
