@@ -49,11 +49,11 @@ if uploaded_files:
                 imgRGB = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
                 # Run YOLOv5 model on the image
-                result = model(imgRGB, size=300, iou_thres=0.5)
+                result = model(imgRGB, size=300)
 
                 # Extract detected objects' information
                 detect_class = result.pandas().xyxy[0]
-
+                detect_class_filtered = detect_class[detect_class['iou'] > 0.5]
                 # Display the original image in col1
                 # col1.image(imgRGB, caption='Original Image', use_column_width=True)
                 # col1.write(f"<h1 style='text-align: center;'>Uploaded File: {uploaded_file.name}<br></h1>", unsafe_allow_html=True)
@@ -82,7 +82,8 @@ if uploaded_files:
                     ax.imshow(image)
 
                     # Draw bounding boxes on the image
-                    for index, row in detect_class.iterrows():
+                    for index, row in detect_class_filtered.iterrows():
+                    # for index, row in detect_class.iterrows():
                      # if row['confidence'] > 0.5 and row['class'] != 0:  # Filter out detections with IoU = 0 and background class
                         xmin, ymin, xmax, ymax = row['xmin'], row['ymin'], row['xmax'], row['ymax']
                         width = xmax - xmin
