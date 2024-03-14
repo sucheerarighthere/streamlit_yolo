@@ -36,7 +36,7 @@ if uploaded_file is not None:
   
   detect_class = result.pandas().xyxy[0] 
 # Rename the 'name' column values from 'chromosome' to 'c'
-  detect_class['name'] = detect_class['name'].replace({'chromosome': 'c'})
+  # detect_class['name'] = detect_class['name'].replace({'chromosome': 'c'})
 
   #labels, cord_thres = detect_class[:, :].numpy(), detect_class[:, :].numpy()
   
