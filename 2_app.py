@@ -35,16 +35,13 @@ if uploaded_file is not None:
   result = model(imgRGB, size=300)
   
   detect_class = result.pandas().xyxy[0] 
-# Rename the 'name' column values from 'chromosome' to 'c'
-  # detect_class['name'] = detect_class['name'].replace({'chromosome': 'c'})
-
   #labels, cord_thres = detect_class[:, :].numpy(), detect_class[:, :].numpy()
   
   #     xmin       ymin    xmax        ymax          confidence  class    name
   #0  148.605362   0.0    1022.523743  818.618286    0.813045      2      turtle
- st.code(detect_class[['name', 'xmin','ymin', 'xmax', 'ymax']])
+ # st.code(detect_class[['name', 'xmin','ymin', 'xmax', 'ymax']])
 
-  st.success(detect_class)
+ #  st.success(detect_class)
   
   # outputpath = 'output.jpg'
   # num_objects_detected = len(detect_class)
