@@ -49,7 +49,7 @@ if uploaded_files:
                 imgRGB = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
                 # Run YOLOv5 model on the image
-                result = model(imgRGB, size=300,iou_thr=0.5)
+                result = model(imgRGB, size=300,iou_thres=0.5)
 
                 # Extract detected objects' information
                 detect_class = result.pandas().xyxy[0]
