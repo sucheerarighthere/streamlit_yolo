@@ -39,7 +39,7 @@ model = torch.hub.load('ultralytics/yolov5', 'custom', path='models/bestyolo.pt'
 
 if uploaded_files:
     # Create columns for layout
-    col1, col2, col3 = st.columns(3)
+    col1, col2 = st.columns(2)
     for uploaded_file in uploaded_files:
         if uploaded_file is not None:
             try:
@@ -66,8 +66,8 @@ if uploaded_files:
                     im_base64 = Image.fromarray(im)
                     im_base64.save(outputpath)
                     img_ = Image.open(outputpath)
-                    col2.image(img_, caption=f'Model Prediction(s)', use_column_width=True)
-                    col2.write(f"<h1 style='text-align: center;'>Number of objects detected: {num_objects_detected}</h1>", unsafe_allow_html=True)
+                    # col2.image(img_, caption=f'Model Prediction(s)', use_column_width=True)
+                    # col2.write(f"<h1 style='text-align: center;'>Number of objects detected: {num_objects_detected}</h1>", unsafe_allow_html=True)
 
                     # Create a new figure for col3
                     fig, ax = plt.subplots()
@@ -85,7 +85,8 @@ if uploaded_files:
                         # ax.text(xmin, ymin,row['name'], color='r')  # Add the name of the object on the bounding box
 
                     # Show the image with bounding boxes
-                    col3.pyplot(fig)
+                    col2.pyplot(fig)
+                    col2.write(f"<h1 style='text-align: center;'>Number of  detected chromosomes: {num_objects_detected}</h1>", unsafe_allow_html=True)
 
             except Exception as e:
                 st.write(f"Error: {e}") 
