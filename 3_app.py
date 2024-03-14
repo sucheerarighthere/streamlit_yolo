@@ -59,7 +59,7 @@ if uploaded_files:
                 # col1.write(f"<h1 style='text-align: center;'>Uploaded File: {uploaded_file.name}<br></h1>", unsafe_allow_html=True)
                 # Display the original image in col1
                 col1.image(imgRGB, caption='Original Image', use_column_width=True)
-                col1.write(f"<h1 style='text-align: center; font-size: 20px;'>Uploaded File: {uploaded_file.name}<br></h1>", unsafe_allow_html=True)
+                col1.write(f"<h1 style='text-align: center;'>Uploaded File: {uploaded_file.name}<br></h1>", unsafe_allow_html=True)
                 
                                 # Display the original image in col1
                 
