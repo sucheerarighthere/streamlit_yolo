@@ -56,7 +56,7 @@ if uploaded_files:
 
                 # Display the original image in col1
                 col1.image(imgRGB, caption='Original Image', use_column_width=True)
-                col1.write(f"<h1 style='text-align: center;'>Uploaded File: {uploaded_file.name}</h1>", unsafe_allow_html=True)
+                col1.write(f"<h1 style='text-align: center;'>Uploaded File: {uploaded_file.name}<br></h1>", unsafe_allow_html=True)
 
                 # Display bounding boxes without class names and confidence scores in col2
                 num_objects_detected = len(detect_class)
@@ -67,7 +67,7 @@ if uploaded_files:
                     im_base64.save(outputpath)
                     img_ = Image.open(outputpath)
                     # col2.image(img_, caption=f'Model Prediction(s)', use_column_width=True)
-                    # col2.write(f"<h1 style='text-align: center;'>Number of objects detected: {num_objects_detected}</h1>", unsafe_allow_html=True)
+                    # col2.write(f"<h1 style='text-align: center;'>Number of objects detected: {num_objects_detected}<br></h1>", unsafe_allow_html=True)
 
                     # Create a new figure for col3
                     fig, ax = plt.subplots()
