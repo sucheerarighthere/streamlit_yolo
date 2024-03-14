@@ -53,7 +53,7 @@ if uploaded_files:
 
                 # Extract detected objects' information
                 detect_class = result.pandas().xyxy[0]
-                detect_class_filtered = detect_class[detect_class['confidence'] > 0.5]
+                detect_class_filtered = detect_class[detect_class['confidence'] > 0.8]
                 # Display the original image in col1
                 # col1.image(imgRGB, caption='Original Image', use_column_width=True)
                 # col1.write(f"<h1 style='text-align: center;'>Uploaded File: {uploaded_file.name}<br></h1>", unsafe_allow_html=True)
