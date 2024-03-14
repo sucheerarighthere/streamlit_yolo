@@ -59,4 +59,3 @@ if uploaded_files:
                 # # Break the loop to process only one uploaded image
                 # break
                 # Display file name below the original image
-  
