@@ -42,7 +42,8 @@ if uploaded_file is not None:
   
   #     xmin       ymin    xmax        ymax          confidence  class    name
   #0  148.605362   0.0    1022.523743  818.618286    0.813045      2      turtle
-  st.code(detect_class[['name', 'xmin','ymin', 'xmax', 'ymax']])
+ xysocde= st.code(detect_class[['name', 'xmin','ymin', 'xmax', 'ymax']])
+ xysocde
   st.success(detect_class)
   
   outputpath = 'output.jpg'
@@ -54,18 +55,18 @@ if uploaded_file is not None:
       img_ = Image.open(outputpath)
       st.image(img_, caption='Model Prediction(s)')
       st.write(f"Number of objects detected: {num_objects_detected}")
-# for i in range(detect_class ):
-#     # ดึงข้อมูล bounding box จาก detect_class
-#     bbox = detect_class[i][:4]  # [x_min, y_min, x_max, y_max]
+for i in range(xysocde):
+    # ดึงข้อมูล bounding box จาก detect_class
+    bbox = detect_class[i][:4]  # [x_min, y_min, x_max, y_max]
 
-#     # กำหนดสีและความหนาของเส้น
-#     color = (255, 0, 0)  # สีแดง (BGR)
-#     thickness = 2
+    # กำหนดสีและความหนาของเส้น
+    color = (255, 0, 0)  # สีแดง (BGR)
+    thickness = 2
 
-#     # วาด bounding box บนภาพ
-#     image = cv2.rectangle(image, (bbox[0], bbox[1]), (bbox[2], bbox[3]), color, thickness)
+    # วาด bounding box บนภาพ
+    image = cv2.rectangle(image, (bbox[0], bbox[1]), (bbox[2], bbox[3]), color, thickness)
 
-# # แสดงภาพที่ถูกประมวลผลแล้ว
-# cv2.imshow('Detected Objects', image)
-# cv2.waitKey(0)
-# cv2.destroyAllWindows()
+# แสดงภาพที่ถูกประมวลผลแล้ว
+cv2.imshow('Detected Objects', image)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
