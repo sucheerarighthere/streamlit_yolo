@@ -83,7 +83,7 @@ if uploaded_files:
 
                     # Draw bounding boxes on the image
                     for index, row in detect_class.iterrows():
-                     if row['confidence'] > 0.5 and row['class'] != 0:  # Filter out detections with IoU = 0 and background class
+                     # if row['confidence'] > 0.5 and row['class'] != 0:  # Filter out detections with IoU = 0 and background class
                         xmin, ymin, xmax, ymax = row['xmin'], row['ymin'], row['xmax'], row['ymax']
                         width = xmax - xmin
                         height = ymax - ymin
