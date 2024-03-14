@@ -55,6 +55,16 @@ if uploaded_file is not None:
       img_ = Image.open(outputpath)
       st.image(img_, caption='Model Prediction(s)')
       st.write(f"Number of objects detected: {num_objects_detected}")
+
+ for index, row in xysocde.iterrows():
+    x_min, y_min, x_max, y_max = int(row['xmin']), int(row['ymin']), int(row['xmax']), int(row['ymax'])
+    cv2.rectangle(image, (x_min, y_min), (x_max, y_max), (0, 255, 0), 2)  # วาด bounding box
+
+# แสดงภาพที่มี bounding box บน Streamlit
+st.image(image, caption='Image with Bounding Boxes', use_column_width=True)
+
+
+
 # for i in range(xysocde):
 #     # ดึงข้อมูล bounding box จาก detect_class
 #     bbox = detect_class[i][:4]  # [x_min, y_min, x_max, y_max]
