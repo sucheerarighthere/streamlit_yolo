@@ -55,8 +55,13 @@ if uploaded_files:
                 detect_class = result.pandas().xyxy[0]
 
                 # Display the original image in col1
+                # col1.image(imgRGB, caption='Original Image', use_column_width=True)
+                # col1.write(f"<h1 style='text-align: center;'>Uploaded File: {uploaded_file.name}<br></h1>", unsafe_allow_html=True)
+                # Display the original image in col1
+                col1.write("<div style='text-align: center;'>", unsafe_allow_html=True)
                 col1.image(imgRGB, caption='Original Image', use_column_width=True)
-                col1.write(f"<h1 style='text-align: center;'>Uploaded File: {uploaded_file.name}<br></h1>", unsafe_allow_html=True)
+                col1.write(f"<h1>Uploaded File: {uploaded_file.name}</h1>", unsafe_allow_html=True)
+                col1.write("</div>", unsafe_allow_html=True)
 
                 # Display bounding boxes without class names and confidence scores in col2
                 num_objects_detected = len(detect_class)
