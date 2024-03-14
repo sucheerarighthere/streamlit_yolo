@@ -36,9 +36,10 @@ st.image(image, caption='สาขาวิชาสถิติ คณะวิ
 uploaded_files = st.file_uploader("Choose .jpg pic ...", type=["jpeg", "png", "bmp", "webp"], accept_multiple_files=True)
 model = torch.hub.load('ultralytics/yolov5', 'custom', path='models/bestyolo.pt')
 # Check if any file is uploaded
+# Check if any file is uploaded
 if uploaded_files:
     # Create columns for layout
-    col1, col2 = st.columns(2)
+    col1, col2, col3 = st.columns(3)
     for uploaded_file in uploaded_files:
         if uploaded_file is not None:
             try:
@@ -68,6 +69,7 @@ if uploaded_files:
                     col2.image(img_, caption=f'Model Prediction(s)', use_column_width=True)
                     col2.write(f"<h1 style='text-align: center;'>Number of objects detected: {num_objects_detected}</h1>", unsafe_allow_html=True)
 
+                    # Create a new figure for col3
                     fig, ax = plt.subplots()
 
                     # Display the image
@@ -83,6 +85,7 @@ if uploaded_files:
                         ax.text(xmin, ymin, row['name'], color='r')  # เพิ่มชื่อของวัตถุลงบน bounding box
 
                     # Show the image with bounding boxes
-                    plt.show()
+                    col3.pyplot(fig)
+
             except Exception as e:
                 st.write(f"Error: {e}")
