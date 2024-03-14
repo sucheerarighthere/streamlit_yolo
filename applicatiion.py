@@ -49,3 +49,6 @@ if uploaded_files:
                     # st.write(f"Number of objects detected: {num_objects_detected}")
                 # Display the number of detected objects in col3
                 num_objects_detected = len(detect_class)
+
+
+
