@@ -34,7 +34,7 @@ st.image(image, caption='สาขาวิชาสถิติ คณะวิ
 
 # Use st.file_uploader for file upload
 uploaded_files = st.file_uploader("Choose .jpg pic ...", type=["jpeg", "png", "bmp", "webp"], accept_multiple_files=True)
-model = torch.hub.load('github.com/ultralytics/yolov5', 'custom', path='models/bestyolo.pt', source='checkout')
+model = torch.hub.load('github.com/ultralytics/yolov5', 'custom', path='models/bestyolo.pt')
 # Check if any file is uploaded
 if uploaded_files:
     # Create columns for layout
