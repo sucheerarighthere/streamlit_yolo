@@ -10,7 +10,13 @@ import cv2
 import detect
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
-
+import argparse
+import streamlit as st
+import io
+import os
+from PIL import Image
+import numpy as np
+import torch, json , cv2 , detect
 # ตั้งค่าเพจให้เป็นแบบที่เราต้องการ พื้นหลัง ตัวหนังสือ ใดๆว่าไป
 st.set_page_config(
     page_title="Object Detection",  # Setting page title
