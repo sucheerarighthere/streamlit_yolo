@@ -133,7 +133,7 @@ if uploaded_files:
                     col2.image(img_, caption=f'Model Prediction(s)' , use_column_width=True)
                     col2.write(f"<h1 style='text-align: center;'>Number of objects detected: {num_objects_detected}</h1>", unsafe_allow_html=True)
 
-                fig, ax = plt.subplots()
+                    fig, ax = plt.subplots()
 
                     # Display the image
                     ax.imshow(image)
