@@ -133,29 +133,19 @@ if uploaded_files:
                     col2.image(img_, caption=f'Model Prediction(s)' , use_column_width=True)
                     col2.write(f"<h1 style='text-align: center;'>Number of objects detected: {num_objects_detected}</h1>", unsafe_allow_html=True)
 
-                # ฟังก์ชันสำหรับแสดงภาพพร้อม bounding boxes
-                def show_detection_result(uploaded_file, detect_class):
-                    img = Image.open(uploaded_file)
-                    fig, ax = plt.subplots(1)
-                    ax.imshow(img)
-                
-                    detection_count = len(detect_class)  # นับจำนวนที่ตรวจจับได้
-                
-                    for detection in detect_class:
-                        x, y, w, h = detection['xmin'], detection['ymin'], detection['xmax'], detection['ymax']
-                        confidence = detection['confidence']
-                        label = detection['class']
-                
-                        rect = patches.Rectangle((x, y), w, h, linewidth=1, edgecolor='r', facecolor='none')
+                fig, ax = plt.subplots()
+
+                    # Display the image
+                    ax.imshow(image)
+                    
+                    # Draw bounding boxes on the image
+                    for index, row in detect_class.iterrows():
+                        xmin, ymin, xmax, ymax = row['xmin'], row['ymin'], row['xmax'], row['ymax']
+                        width = xmax - xmin
+                        height = ymax - ymin
+                        rect = patches.Rectangle((xmin, ymin), width, height, linewidth=1, edgecolor='r', facecolor='none')
                         ax.add_patch(rect)
-                        ax.text(x, y, f'{label} {confidence:.2f}', color='r')
-                
-                    # แสดงจำนวนที่ตรวจจับได้
-                    plt.title(f'Detection Count: {detection_count}')
+                        ax.text(xmin, ymin, row['name'], color='r')  # เพิ่มชื่อของวัตถุลงบน bounding box
+                    
+                    # Show the image with bounding boxes
                     plt.show()
-                
-                # แสดงผลลัพธ์การตรวจจับเป็นภาพ
-                try:
-                    show_detection_result(pred['predictions'][0]['image_path'], pred['predictions'])
-                except Exception as e:
-                    print(f"Error: {e}")
