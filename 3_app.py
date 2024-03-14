@@ -36,7 +36,7 @@ st.image(image, caption='สาขาวิชาสถิติ คณะวิ
 uploaded_files = st.file_uploader("Choose .jpg pic ...", type=["jpeg", "png", "bmp", "webp"], accept_multiple_files=True)
 model = torch.hub.load('ultralytics/yolov5', 'custom', path='models/bestyolo.pt')
 # Check if any file is uploaded
-# Check if any file is uploaded
+
 if uploaded_files:
     # Create columns for layout
     col1, col2, col3 = st.columns(3)
@@ -82,10 +82,10 @@ if uploaded_files:
                         height = ymax - ymin
                         rect = patches.Rectangle((xmin, ymin), width, height, linewidth=1, edgecolor='r', facecolor='none')
                         ax.add_patch(rect)
-                        ax.text(xmin, ymin, row['name'], color='r')  # เพิ่มชื่อของวัตถุลงบน bounding box
+                        ax.text(xmin, ymin, row['name'], color='r')  # Add the name of the object on the bounding box
 
                     # Show the image with bounding boxes
                     col3.pyplot(fig)
 
             except Exception as e:
-                st.write(f"Error: {e}")
+                st.write(f"Error: {e}") 
