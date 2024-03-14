@@ -42,8 +42,8 @@ if uploaded_file is not None:
   
   #     xmin       ymin    xmax        ymax          confidence  class    name
   #0  148.605362   0.0    1022.523743  818.618286    0.813045      2      turtle
- xysocde= st.code(detect_class[['name', 'xmin','ymin', 'xmax', 'ymax']])
- xysocde
+ st.code(detect_class[['name', 'xmin','ymin', 'xmax', 'ymax']])
+
   st.success(detect_class)
   
   # outputpath = 'output.jpg'
@@ -56,7 +56,7 @@ if uploaded_file is not None:
   #     st.image(img_, caption='Model Prediction(s)')
   #     st.write(f"Number of objects detected: {num_objects_detected}")
 
- for index, row in xysocde.iterrows():
+ for index, row in detect_class.iterrows():
     x_min, y_min, x_max, y_max = int(row['xmin']), int(row['ymin']), int(row['xmax']), int(row['ymax'])
     cv2.rectangle(image, (x_min, y_min), (x_max, y_max), (0, 255, 0), 2)  # วาด bounding box
 
