@@ -17,7 +17,7 @@ model = torch.hub.load('ultralytics/yolov5', 'custom', path='models/bestyolo.pt'
 # Use st.file_uploader for file upload
 uploaded_files = st.file_uploader("Choose .jpg pic ...", type= ["jpeg", "png", "bmp", "webp"], accept_multiple_files=True)
 
-Check if any file is uploaded
+# Check if any file is uploaded
 if uploaded_files:
     # Create columns for layout
     col1, col2 = st.columns(2)
