@@ -91,10 +91,9 @@ if uploaded_files:
                         rect = patches.Rectangle((xmin, ymin), width, height, linewidth=1, edgecolor='r', facecolor='none')
                         ax.add_patch(rect)
                         # ax.text(xmin, ymin,row['name'], color='r')  # Add the name of the object on the bounding box
-                        num_boxes_drawn = len(detect_class_filtered)
                     # Show the image with bounding boxes
                     col2.pyplot(fig)
-                    col2.write(f"<h1 style='text-align: center;'>Number of  detected chromosomes: {num_boxes_drawn}<br></h1>", unsafe_allow_html=True)
+                    col2.write(f"<h1 style='text-align: center;'>Number of  detected chromosomes: {num_objects_detected}<br></h1>", unsafe_allow_html=True)
 
             except Exception as e:
                 st.write(f"Error: {e}") 
