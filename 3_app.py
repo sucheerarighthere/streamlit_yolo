@@ -149,3 +149,5 @@ if uploaded_files:
                     
                     # Show the image with bounding boxes
                     plt.show()
+        except Exception as e:
+        st.write(f"Error: {e}")
