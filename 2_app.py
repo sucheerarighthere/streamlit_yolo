@@ -46,15 +46,15 @@ if uploaded_file is not None:
  xysocde
   st.success(detect_class)
   
-  outputpath = 'output.jpg'
-  num_objects_detected = len(detect_class)
-  result.render()  # render bbox in image
-  for im in result.ims:
-      im_base64 = Image.fromarray(im)
-      im_base64.save(outputpath)
-      img_ = Image.open(outputpath)
-      st.image(img_, caption='Model Prediction(s)')
-      st.write(f"Number of objects detected: {num_objects_detected}")
+  # outputpath = 'output.jpg'
+  # num_objects_detected = len(detect_class)
+  # result.render()  # render bbox in image
+  # for im in result.ims:
+  #     im_base64 = Image.fromarray(im)
+  #     im_base64.save(outputpath)
+  #     img_ = Image.open(outputpath)
+  #     st.image(img_, caption='Model Prediction(s)')
+  #     st.write(f"Number of objects detected: {num_objects_detected}")
 
  for index, row in xysocde.iterrows():
     x_min, y_min, x_max, y_max = int(row['xmin']), int(row['ymin']), int(row['xmax']), int(row['ymax'])
