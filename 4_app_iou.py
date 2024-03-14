@@ -53,7 +53,7 @@ if uploaded_files:
 
                 # Extract detected objects' information
                 detect_class = result.pandas().xyxy[0]
-                detect_class_filtered = detect_class[detect_class['confidence'] > 0.8]
+                detect_class_filtered = detect_class[detect_class['confidence'] > 0.5]
                 # Display the original image in col1
                 # col1.image(imgRGB, caption='Original Image', use_column_width=True)
                 # col1.write(f"<h1 style='text-align: center;'>Uploaded File: {uploaded_file.name}<br></h1>", unsafe_allow_html=True)
@@ -91,10 +91,10 @@ if uploaded_files:
                         rect = patches.Rectangle((xmin, ymin), width, height, linewidth=1, edgecolor='r', facecolor='none')
                         ax.add_patch(rect)
                         # ax.text(xmin, ymin,row['name'], color='r')  # Add the name of the object on the bounding box
-
+                        num_boxes_drawn = len(detect_class_filtered)
                     # Show the image with bounding boxes
                     col2.pyplot(fig)
-                    col2.write(f"<h1 style='text-align: center;'>Number of  detected chromosomes: {num_objects_detected}<br></h1>", unsafe_allow_html=True)
+                    col2.write(f"<h1 style='text-align: center;'>Number of  detected chromosomes: {num_boxes_drawn}<br></h1>", unsafe_allow_html=True)
 
             except Exception as e:
                 st.write(f"Error: {e}") 
