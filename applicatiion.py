@@ -6,18 +6,13 @@ import numpy as np
 import torch
 import cv2
 import detect
-
-
 # Set image
 image = Image.open('STAT-Header-Logo-V7.png')
 st.image(image, caption='สาขาวิชาสถิติ คณะวิทยาศาสตร์ มหาวิทยาลัยขอนแก่น', use_column_width=True)
-
 # Load YOLOv5 model
 model = torch.hub.load('ultralytics/yolov5', 'custom', path='models/bestyolo.pt')
-
 # Use st.file_uploader for file upload
 uploaded_files = st.file_uploader("Choose .jpg pic ...", type= ["jpeg", "png", "bmp", "webp"], accept_multiple_files=True)
-
 # Check if any file is uploaded
 if uploaded_files:
     # Create columns for layout
