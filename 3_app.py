@@ -95,9 +95,8 @@ if uploaded_files:
                     col2.pyplot(fig)
                     col2.write(f"<h1 style='text-align: center;'>Number of  detected chromosomes: {num_objects_detected}<br></h1>", unsafe_allow_html=True)
                     # col2.pyplot(fig)
-                    col1.write("=" * 38 + " " * 4 + "=" * 38)
-                    col2.write("=" * 38 + " " * 4 + "=" * 38)
-                    st.write("=" * 20 + " Loop End " + "=" * 20)
+                    # col1.write("=" * 38 + " " * 4 + "=" * 38)
+                    # col2.write("=" * 38 + " " * 4 + "=" * 38)
             except Exception as e:
                 st.write(f"Error: {e}") 
-    # st.write("=" * 80)
+ 
