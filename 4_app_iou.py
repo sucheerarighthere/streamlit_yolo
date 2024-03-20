@@ -22,7 +22,7 @@ image = Image.open('STAT-Header-Logo-V7.png')
 st.image(image, caption='Department of Statistics, Faculty of Science, Khon Kaen University', use_column_width=True)
 
 uploaded_files = st.file_uploader("Choose .jpg pic ...", type=["jpeg", "png", "bmp", "webp"], accept_multiple_files=True)
-model = torch.hub.load('ultralytics/yolov5', 'custom', path='models/bestyolo.pt')
+model=torch.hub.load('ultralytics/yolov5', 'custom', path='models/bestyolo.pt')
 
 # Check if any file is uploaded
 if uploaded_files:
