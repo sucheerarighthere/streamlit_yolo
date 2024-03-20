@@ -25,6 +25,14 @@ st.set_page_config(
     initial_sidebar_state="expanded",  # Expanding sidebar by default
 )
 st.sidebar.write("## About Developer :gear:")
+    st.page_link("https://www.facebook.com/nannthd", label="Natthida Sareumngam", icon="🏠")
+    st.page_link("https://www.facebook.com/gabbyrighthere/", label="Sucheera Nakkhum", icon="👻")
+
+
+
+
+
+
 # ตั้งค่าภาพ
 image = Image.open('STAT-Header-Logo-V7.png')
 st.image(image, caption='สาขาวิชาสถิติ คณะวิทยาศาสตร์ มหาวิทยาลัยขอนแก่น', use_column_width=True)
