@@ -11,23 +11,24 @@ import detect
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 
-# ตั้งค่าเพจให้เป็นแบบที่เราต้องการ พื้นหลัง ตัวหนังสือ 
+# ตั้งค่าเพจให้เป็นแบบที่เราต้องการ พื้นหลัง ตัวหนังสือ
 st.set_page_config(
     page_title="Object Detection",  # Setting page title
     page_icon="🔬",  # Setting page icon
-    # layout="wide",      # Setting layout to wide
     initial_sidebar_state="expanded",  # Expanding sidebar by default
 )
-# ตั้งค่าภาพ
+
 image = Image.open('STAT-Header-Logo-V7.png')
-st.image(image, caption='สาขาวิชาสถิติ คณะวิทยาศาสตร์ มหาวิทยาลัยขอนแก่น', use_column_width=True)
-# Use st.file_uploader for file upload
+st.image(image, caption='Department of Statistics, Faculty of Science, Khon Kaen University', use_column_width=True)
+
 uploaded_files = st.file_uploader("Choose .jpg pic ...", type=["jpeg", "png", "bmp", "webp"], accept_multiple_files=True)
-model=torch.hub.load('ultralytics/yolov5','custom',path='models/yolov5m.pt')
+model = torch.hub.load('ultralytics/yolov5', 'custom', path='models/bestyolo.pt')
+
 # Check if any file is uploaded
 if uploaded_files:
     # Create columns for layout
     col1, col2 = st.columns(2)
+    
     for uploaded_file in uploaded_files:
         if uploaded_file is not None:
             try:
@@ -43,16 +44,10 @@ if uploaded_files:
                 detect_class = result.pandas().xyxy[0]
 
                 # Display the original image in col1
-                # col1.image(imgRGB, caption='Original Image', use_column_width=True)
-                # col1.write(f"<h1 style='text-align: center;'>Uploaded File: {uploaded_file.name}<br></h1>", unsafe_allow_html=True)
-                # Display the original image in col1
                 col1.image(imgRGB, caption='Original Image', use_column_width=True)
-                col1.write(f"<h1 style='text-align: center;'>Uploaded File: {uploaded_file.name}<br></h1>", unsafe_allow_html=True)
-                
-                                # Display the original image in col1
-                
+                col1.write(f"<h1 style='text-align: center;'>Uploaded File: {uploaded_file.name}<br><br></h1>", unsafe_allow_html=True)
 
-                # Display bounding boxes without class names and confidence scores in col2
+                # Display bounding boxes in col2
                 num_objects_detected = len(detect_class)
                 outputpath = 'output.jpg'
                 result.render()  # render bbox in image
@@ -60,10 +55,8 @@ if uploaded_files:
                     im_base64 = Image.fromarray(im)
                     im_base64.save(outputpath)
                     img_ = Image.open(outputpath)
-                    # col2.image(img_, caption=f'Model Prediction(s)', use_column_width=True)
-                    # col2.write(f"<h1 style='text-align: center;'>Number of objects detected: {num_objects_detected}<br></h1>", unsafe_allow_html=True)
 
-                    # Create a new figure for col3
+                    # Create a new figure for col2
                     fig, ax = plt.subplots()
 
                     # Display the image
@@ -76,11 +69,11 @@ if uploaded_files:
                         height = ymax - ymin
                         rect = patches.Rectangle((xmin, ymin), width, height, linewidth=1, edgecolor='r', facecolor='none')
                         ax.add_patch(rect)
-                        # ax.text(xmin, ymin,row['name'], color='r')  # Add the name of the object on the bounding box
+                        ax.text(0.5, -0.1, f"{uploaded_file.name}, chromosomes: {num_objects_detected}", ha='center', transform=ax.transAxes)
 
                     # Show the image with bounding boxes
                     col2.pyplot(fig)
-                    col2.write(f"<h1 style='text-align: center;'>Number of  detected chromosomes: {num_objects_detected}<br></h1>", unsafe_allow_html=True)
-
+                    col2.write(f"<h1 style='text-align: center;'>Number of detected chromosomes: {num_objects_detected}</h1>", unsafe_allow_html=True)
+                    
             except Exception as e:
-                st.write(f"Error: {e}") 
+                st.write(f"Error: {e}")
