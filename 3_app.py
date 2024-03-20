@@ -24,12 +24,14 @@ st.set_page_config(
     # layout="wide",      # Setting layout to wide
     initial_sidebar_state="expanded",  # Expanding sidebar by default
 )
-with st.expander(_("About the #30DaysOfStreamlit")):
+with st.expander(_("About Developer")):
     st.markdown(_(
         """
-st.sidebar.write("## About Developer :gear:")
-st.page_link("https://www.facebook.com/nannthd", label="Natthida Sareumngam", icon="🏠")
-st.page_link("https://www.facebook.com/gabbyrighthere/", label="Sucheera Nakkhum", icon="👻")
+# st.sidebar.write("## About Developer :gear:")
+# st.page_link("https://www.facebook.com/nannthd", label="Natthida Sareumngam", icon="🏠")
+# st.page_link("https://www.facebook.com/gabbyrighthere/", label="Sucheera Nakkhum", icon="👻")
+- [Natthida](https://www.facebook.com/nannthd)
+- [Sucheera](https://www.facebook.com/gabbyrighthere/)
 
 ))
 
