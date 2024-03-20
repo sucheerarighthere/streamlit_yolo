@@ -26,7 +26,7 @@ st.set_page_config(
 
 
 
-st.sidebar.write("เว็บแอปพลิเคชันนี้เป็นส่วนหนึ่งของรายวิชา SC 664 775 Statistical Information and Data Science Project II")
+# st.sidebar.write("เว็บแอปพลิเคชันนี้เป็นส่วนหนึ่งของรายวิชา SC 664 775 Statistical Information and Data Science Project II")
 # ตั้งค่าภาพ
 image = Image.open('STAT-Header-Logo-V7.png')
 st.image(image, caption='สาขาวิชาสถิติ คณะวิทยาศาสตร์ มหาวิทยาลัยขอนแก่น', use_column_width=True)
