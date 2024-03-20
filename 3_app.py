@@ -88,6 +88,7 @@ if uploaded_files:
                         height = ymax - ymin
                         rect = patches.Rectangle((xmin, ymin), width, height, linewidth=1, edgecolor='r', facecolor='none')
                         ax.add_patch(rect)
+                        ax.text(0.5, -0.1, f"Number of detected chromosomes: {num_objects_detected}", ha='center', transform=ax.transAxes)
                         # ax.text(xmin, ymin,row['name'], color='r')  # Add the name of the object on the bounding box
 
                     # Show the image with bounding boxes
