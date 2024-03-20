@@ -99,3 +99,5 @@ if uploaded_files:
 
             except Exception as e:
                 st.write(f"Error: {e}") 
+col1.write("=" * 80)
+col2.write("=" * 80)
