@@ -23,8 +23,8 @@ st.set_page_config(
     page_icon="🔬",  # Setting page icon
     # layout="wide",      # Setting layout to wide
     initial_sidebar_state="expanded",  # Expanding sidebar by default
-image1 = Image.open('STAT-Header-Logo-V7.png')
-st.image(image1, caption='Department of Statistics, Faculty of Science, Khon Kaen University', use_column_width=True )
+image= Image.open('STAT-Header-Logo-V7.png')
+st.image(image, caption='Department of Statistics, Faculty of Science, Khon Kaen University', use_column_width=True)
 
 uploaded_files = st.file_uploader("Choose .jpg pic ...", type=["jpeg", "png", "bmp", "webp"], accept_multiple_files=True)
 model = torch.hub.load('ultralytics/yolov5', 'custom', path='models/bestyolo.pt')
