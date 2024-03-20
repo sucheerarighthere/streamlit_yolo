@@ -10,14 +10,9 @@ import cv2
 import detect
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
-import argparse
-import streamlit as st
-import io
-import os
-from PIL import Image
-import numpy as np
 import torch, json , cv2 , detect
-# ตั้งค่าเพจให้เป็นแบบที่เราต้องการ พื้นหลัง ตัวหนังสือ ใดๆว่าไป
+
+# ตั้งค่าเพจให้เป็นแบบที่เราต้องการ พื้นหลัง ตัวหนังสือ 
 st.set_page_config(
     page_title="Object Detection",  # Setting page title
     page_icon="🔬",  # Setting page icon
@@ -53,7 +48,7 @@ if uploaded_files:
 
                 # Extract detected objects' information
                 detect_class = result.pandas().xyxy[0]
-                detect_class_filtered = detect_class[detect_class['confidence'] > 0.5]
+
                 # Display the original image in col1
                 # col1.image(imgRGB, caption='Original Image', use_column_width=True)
                 # col1.write(f"<h1 style='text-align: center;'>Uploaded File: {uploaded_file.name}<br></h1>", unsafe_allow_html=True)
@@ -82,15 +77,14 @@ if uploaded_files:
                     ax.imshow(image)
 
                     # Draw bounding boxes on the image
-                    for index, row in detect_class_filtered.iterrows():
-                    # for index, row in detect_class.iterrows():
-                     # if row['confidence'] > 0.5 and row['class'] != 0:  # Filter out detections with IoU = 0 and background class
+                    for index, row in detect_class.iterrows():
                         xmin, ymin, xmax, ymax = row['xmin'], row['ymin'], row['xmax'], row['ymax']
                         width = xmax - xmin
                         height = ymax - ymin
                         rect = patches.Rectangle((xmin, ymin), width, height, linewidth=1, edgecolor='r', facecolor='none')
                         ax.add_patch(rect)
                         # ax.text(xmin, ymin,row['name'], color='r')  # Add the name of the object on the bounding box
+
                     # Show the image with bounding boxes
                     col2.pyplot(fig)
                     col2.write(f"<h1 style='text-align: center;'>Number of  detected chromosomes: {num_objects_detected}<br></h1>", unsafe_allow_html=True)
