@@ -24,7 +24,7 @@ st.set_page_config(
     # layout="wide",      # Setting layout to wide
     initial_sidebar_state="expanded",  # Expanding sidebar by default
 )
-
+st.sidebar.write("## About Developer :gear:")
 # ตั้งค่าภาพ
 image = Image.open('STAT-Header-Logo-V7.png')
 st.image(image, caption='สาขาวิชาสถิติ คณะวิทยาศาสตร์ มหาวิทยาลัยขอนแก่น', use_column_width=True)
