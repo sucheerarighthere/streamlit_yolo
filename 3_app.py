@@ -92,8 +92,9 @@ if uploaded_files:
                         # ax.text(xmin, ymin,row['name'], color='r')  # Add the name of the object on the bounding box
 
                     # Show the image with bounding boxes
-                    col2.pyplot(fig)
+                    # col2.pyplot(fig)
                     col2.write(f"<h1 style='text-align: center;'>Number of  detected chromosomes: {num_objects_detected}<br></h1>", unsafe_allow_html=True)
+                    col2.pyplot(fig)
 
             except Exception as e:
                 st.write(f"Error: {e}") 
