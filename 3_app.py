@@ -17,15 +17,16 @@ import os
 from PIL import Image
 import numpy as np
 import torch, json , cv2 , detect
-# ตั้งค่าเพจให้เป็นแบบที่เราต้องการ พื้นหลัง ตัวหนังสือ ใดๆว่าไป
+# ตั้งค่าเพจให้เป็นแบบที่เราต้องการ พื้นหลัง ตัวหนังสือ 
 st.set_page_config(
     page_title="Object Detection",  # Setting page title
     page_icon="🔬",  # Setting page icon
     # layout="wide",      # Setting layout to wide
     initial_sidebar_state="expanded",  # Expanding sidebar by default
-image= Image.open('STAT-Header-Logo-V7.png')
-st.image(image, caption='Department of Statistics, Faculty of Science, Khon Kaen University', use_column_width=True)
-
+)
+# ตั้งค่าภาพ
+image = Image.open('STAT-Header-Logo-V7.png')
+st.image(image, caption='สาขาวิชาสถิติ คณะวิทยาศาสตร์ มหาวิทยาลัยขอนแก่น', use_column_width=True)
 uploaded_files = st.file_uploader("Choose .jpg pic ...", type=["jpeg", "png", "bmp", "webp"], accept_multiple_files=True)
 model = torch.hub.load('ultralytics/yolov5', 'custom', path='models/bestyolo.pt')
 # Check if any file is uploaded
