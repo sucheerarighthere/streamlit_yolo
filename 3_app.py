@@ -24,16 +24,10 @@ st.set_page_config(
     # layout="wide",      # Setting layout to wide
     initial_sidebar_state="expanded",  # Expanding sidebar by default
 
-
-
-# st.sidebar.write("เว็บแอปพลิเคชันนี้เป็นส่วนหนึ่งของรายวิชา SC 664 775 Statistical Information and Data Science Project II")
 # ตั้งค่าภาพ
 image = Image.open('STAT-Header-Logo-V7.png')
 st.image(image, caption='สาขาวิชาสถิติ คณะวิทยาศาสตร์ มหาวิทยาลัยขอนแก่น', use_column_width=True)
-
 # model = torch.hub.load('ultralytics/yolov5', 'custom', path='models/bestyolo.pt')
-
-
 # Use st.file_uploader for file upload
 uploaded_files = st.file_uploader("Choose .jpg pic ...", type=["jpeg", "png", "bmp", "webp"], accept_multiple_files=True)
 model = torch.hub.load('ultralytics/yolov5', 'custom', path='models/bestyolo.pt')
