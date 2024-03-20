@@ -97,7 +97,7 @@ if uploaded_files:
                     # col2.pyplot(fig)
                     col1.write("=" * 38 + " " * 4 + "=" * 38)
                     col2.write("=" * 38 + " " * 4 + "=" * 38)
-                    st.write("---" * 50.center(80))
+                    st.write("=" * 20 + " Loop End " + "=" * 20)
             except Exception as e:
                 st.write(f"Error: {e}") 
     # st.write("=" * 80)
