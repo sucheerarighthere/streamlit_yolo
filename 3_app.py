@@ -25,10 +25,6 @@ st.set_page_config(
     initial_sidebar_state="expanded",  # Expanding sidebar by default
 
 st.sidebar.write("## About Developer :gear:")
-# st.page_link("https://www.facebook.com/nannthd", label="Natthida Sareumngam", icon="🏠")
-# st.page_link("https://www.facebook.com/gabbyrighthere/", label="Sucheera Nakkhum", icon="👻")
-- [Natthida](https://www.facebook.com/nannthd)
-- [Sucheera](https://www.facebook.com/gabbyrighthere/)
 
 # ตั้งค่าภาพ
 image = Image.open('STAT-Header-Logo-V7.png')
