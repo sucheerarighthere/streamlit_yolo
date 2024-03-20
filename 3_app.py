@@ -88,15 +88,13 @@ if uploaded_files:
                         height = ymax - ymin
                         rect = patches.Rectangle((xmin, ymin), width, height, linewidth=1, edgecolor='r', facecolor='none')
                         ax.add_patch(rect)
-                        ax.text(0.5, -0.1, f"Number of detected chromosomes: {num_objects_detected}", ha='center', transform=ax.transAxes)
+                        ax.text(0.5, -0.1, f"{uploaded_file.name},chromosomes: {num_objects_detected}", ha='center', transform=ax.transAxes)
                         # ax.text(xmin, ymin,row['name'], color='r')  # Add the name of the object on the bounding box
 
                     # Show the image with bounding boxes
                     col2.pyplot(fig)
                     col2.write(f"<h1 style='text-align: center;'>Number of  detected chromosomes: {num_objects_detected}</h1>", unsafe_allow_html=True)
-                    # col2.pyplot(fig)
-                    # col1.write("=" * 38 + " " * 4 + "=" * 38)
-                    # col2.write("=" * 38 + " " * 4 + "=" * 38)
+                    
             except Exception as e:
                 st.write(f"Error: {e}") 
  
