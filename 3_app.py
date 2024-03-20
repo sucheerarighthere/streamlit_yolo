@@ -95,7 +95,11 @@ if uploaded_files:
                     col2.pyplot(fig)
                     col2.write(f"<h1 style='text-align: center;'>Number of  detected chromosomes: {num_objects_detected}<br></h1>", unsafe_allow_html=True)
                     # col2.pyplot(fig)
-                    st.write("=" * 80)
+                    # Add separator line under col2
+                    col2.write("=======\n")
+
+                    # Display separator line between col1 and col2
+                    col1.write("=======\n")
             except Exception as e:
                 st.write(f"Error: {e}") 
     # st.write("=" * 80)
